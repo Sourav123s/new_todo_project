@@ -82,6 +82,8 @@ function deleteitem(index) {
 
 let deleteAll = document.getElementById("deleteallbtn");
 deleteAll.addEventListener("click", function () {
+  let addtaskBtn = document.getElementById("addtaskbtn");
+  let savetaskBtn = document.getElementById("savetaskbtn");
   let webtask = localStorage.getItem("localtask");
   let taskobj = JSON.parse(webtask);
   if (webtask == null) {
@@ -90,7 +92,26 @@ deleteAll.addEventListener("click", function () {
     taskobj = JSON.parse(webtask);
     taskobj = [];
   }
-
+  savetaskBtn.style.display = "none";
+  addtaskBtn.style.display = "block";
+  addTaskInput.value = "";
   localStorage.setItem("localtask", JSON.stringify(taskobj));
   showtask();
 });
+// shearchlist
+
+// let searchTextbox = document.getElementById("searchtextbox");
+
+// searchTextbox.addEventListener("input", function () {
+//   let trList = document.querySelectorAll("tr");
+//   Array.from(trList).forEach(function (item) {
+//     let searchtext = item.getElementsByTagName("td")[0].innerText;
+//     let searchtextval = searchTextbox.value;
+//     let re = new RegExp(searchtextval, "gi");
+//     if (searchtext.match(re)) {
+//       item.style.display = "block";
+//     } else {
+//       item.style.display = "none";
+//     }
+//   });
+// });
